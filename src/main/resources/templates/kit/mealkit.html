@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/mealkit.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div class="meal_container">
+	<h1>밀키트 만들기</h1>
+	<div class="meal_category">
+		<button onclick="meatBtn()" id="meat_cate">meat</button>>
+		<button onclick="saladBtn()" id="salad_cate">salad</button>>
+		<button onclick="toppingBtn()" id="topping_cate">topping</button>>
+		<button onclick="sauceBtn()" id="sauce_cate">sauce</button>
+	</div>
+	<div class="container">
+	<div id="meat" class="container_category">
+		<div th:onclick="add_kit([[${vo.name}]], [[${vo.price}]], [[${vo.midx}]])"  th:each="vo : ${meatList}" class="item">
+			<img th:src="@{/resources/kit/}+${vo.image}">
+			<span th:text="${vo.name}">상품명</span>
+			<span th:text="|${vo.price}원|">가격</span>
+		</div>
+	</div>
+	<div id="salad" style="display: none" class="container_category">
+		<div th:onclick="add_kit([[${vo.name}]], [[${vo.price}]], [[${vo.midx}]])"   th:each="vo : ${saladList}" class="item">
+			<img th:src="@{/resources/kit/}+${vo.image}">
+			<span th:text="${vo.name}">상품명</span>
+			<span th:text="|${vo.price}원|">가격</span>
+		</div>
+	</div>
+	<div id="topping" style="display: none" class="container_category">
+		<div th:onclick="add_kit([[${vo.name}]], [[${vo.price}]], [[${vo.midx}]])"   th:each="vo : ${toppingList}" class="item">
+			<img th:src="@{/resources/kit/}+${vo.image}">
+			<span th:text="${vo.name}">상품명</span>
+			<span th:text="|${vo.price}원|">가격</span>
+		</div>
+	</div>
+	<div id="sauce" style="display: none" class="container_category">
+		<div th:onclick="add_kit([[${vo.name}]], [[${vo.price}]], [[${vo.midx}]])"   th:each="vo : ${sauceList}" class="item">
+			<img th:src="@{/resources/kit/}+${vo.image}">
+			<span th:text="${vo.name}">상품명</span>
+			<span th:text="|${vo.price}원|">가격</span>
+		</div>
+	</div>
+	<div class="right_things">
+		<div class="kitbox_text">선택 리스트</div>
+		<div id="kitbox"></div>
+		<div id="price_all"></div>
+		<div class="btn_box">
+			<button onclick="cartBtn()">지금 바로 구매</button>
+			<button onclick="cartChoiceBtn()">장바구니에 담기</button>
+		</div>
+	</div>
+	</div>
+	</div>
+		
+	
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+	<script type="text/javascript">
+	// idx 담을 배열 선언
+	let idxList = new Array();	// const 로 선언하면 상수라서 변경이 불가!! let으로 선언할 것!
+	let price_all = 0;
+	document.getElementById("price_all").innerHTML="총 액 : "+price_all + "원";
+	
+	const $kitbox = document.getElementById('kitbox');
+	
+	const add_kit = function(name, price, idx){
+	      /* 자식 노드 추가 */
+	      const $new = "<div>"+ name +"    "+ price +"원"+
+	      '<button onclick="delete_row(this,'+ idx+","+ price+ ')">x</button></div>';
+	      
+	      const $div = document.createElement('div');       // 새로운 요소 생성. - ul 태그
+	      $div.innerHTML = $new;
+	      $kitbox.appendChild($div);
+	      //생성된 요소의 css 스타일을 적용하는 방법.
+	      /* $div.className='item';
+	      $div.classList.add('item01'); */
+	      idxList.push(idx);	// 배열에 해당 idx 담기!!
+	      console.log(idxList);
+	      price_all+= parseInt(price);
+		  document.getElementById("price_all").innerHTML="총 액 : "+ price_all + "원";
+	    }
+	
+	// x 버튼 클릭 함수
+	const delete_row = function(me, idx, price){
+		me.parentNode.remove();
+		const value = idx;
+		idxList = idxList.filter(item => item !== value);	// 배열에서 해당 idx 제거 !!
+		
+		console.log(idxList);
+		price_all-= parseInt(price);
+		  document.getElementById("price_all").innerHTML="총 액 : "+price_all + "원";
+	}
+	
+	// meat 보이기 버튼
+	const meatBtn = function(){
+		document.getElementById("meat").style.display = "flex";
+		document.getElementById("salad").style.display = "none";
+		document.getElementById("topping").style.display = "none";
+		document.getElementById("sauce").style.display = "none";
+		document.getElementById("meat_cate").style.border = "3px solid var(--brown-color)";
+		document.getElementById("salad_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("topping_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("sauce_cate").style.border = "3px solid var(--green-color)";
+	} 
+	
+	// salad 보이기 버튼
+	const saladBtn = function(){
+		document.getElementById("meat").style.display = "none";
+		document.getElementById("salad").style.display = "flex";
+		document.getElementById("topping").style.display = "none";
+		document.getElementById("sauce").style.display = "none";
+		document.getElementById("meat_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("salad_cate").style.border = "3px solid var(--brown-color)";
+		document.getElementById("topping_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("sauce_cate").style.border = "3px solid var(--green-color)";
+	}
+	
+	// topping 보이기 버튼
+	const toppingBtn = function(){
+		document.getElementById("meat").style.display = "none";
+		document.getElementById("salad").style.display = "none";
+		document.getElementById("topping").style.display = "flex";
+		document.getElementById("sauce").style.display = "none";
+		document.getElementById("meat_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("salad_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("topping_cate").style.border = "3px solid var(--brown-color)";
+		document.getElementById("sauce_cate").style.border = "3px solid var(--green-color)";
+	}
+	
+	// sauce 보이기 버튼
+	const sauceBtn = function(){
+		document.getElementById("meat").style.display = "none";
+		document.getElementById("salad").style.display = "none";
+		document.getElementById("topping").style.display = "none";
+		document.getElementById("sauce").style.display = "flex";
+		document.getElementById("meat_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("salad_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("topping_cate").style.border = "3px solid var(--green-color)";
+		document.getElementById("sauce_cate").style.border = "3px solid var(--brown-color)";
+	}
+	
+	// 장바구니 이동 함수 (지금 구매하기)
+	const cartBtn = function(){
+		let idx_list = "";
+		for(var idx of idxList){
+			idx_list += "/" + idx;
+		}
+		console.log(idx_list);
+		
+		window.location.href="/mealkit/cart?type=mealkit&idx_list=" + idx_list+"&price="+price_all;
+	}
+	
+	// 장바구니에 담기
+	const cartChoiceBtn = function(){
+		let idx_list = "";
+		for(var idx of idxList){
+			idx_list += "/" + idx;
+		}
+		
+		let y = confirm("kit를 장바구니에 담았습니다.\n장바구니로 이동할까요?");
+		if(y) window.location.href="/mealkit/cart?type=mealkit&idx_list=" + idx_list+"&price="+price_all;
+		else window.location.href="/mealkit/?type=mealkit&idx_list=" + idx_list+"&price="+price_all;
+	}
+	
+	
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	<title>아보카도</title>
+	<link rel="stylesheet" href="/resources/css/header.css">
+	<link rel="stylesheet" href="/resources/css/board.css">
+	<link rel="stylesheet" href="/resources/css/footer.css">
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+
+	 $(function(){
+         like();
+         like2();
+      });
+	
+	function like(){
+	     var cnt = ""; 
+	     var link = document.location.href;
+	    $('#like').on('click',function() {
+	    	var nickname = $(".nickname").val();
+	    	$.ajax({
+	               type : 'post',
+	               url : 'like',
+	               data : {
+	                  fidx:$(".fidx").val(),
+	                  nickname:nickname
+	                  },
+	                  success : function(count) {
+	                     cnt = count
+	                     console.log(cnt);
+	                     location.href= link;
+	                  }
+	                  
+	               });  
+	    });
+	   
+	        
+	 }
+
+	function like2(){
+	     var cnt = ""; 
+	     var link = document.location.href;
+	    $('#like2').on('click',function() {
+	    	var nickname = $(".nickname").val();
+	    	$.ajax({
+	               type : 'post',
+	               url : 'like2',
+	               data : {
+	                  fidx:$(".fidx").val(),
+	                  nickname:nickname
+	                  },
+	                  success : function(count) {
+	                     cnt = count
+	                     console.log(cnt);
+	                     location.href= link;
+	                  }
+	               });  
+	    });
+	 }
+	</script>
+      
+</head>
+
+<body>
+
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+      
+        <div id="all">
+        
+         	<div class="container">
+			
+				<th:block th:if="${count==0}">
+					<a type="button" class="heartbutton" id="like"><img src="resources/img/heart_r.png" align="right"></a>			
+				</th:block>
+				<th:block th:if="${count==1}">
+					<a type="button" class="heartbutton2" id="like2"><img src="resources/img/heart.png" align="right"></a>
+				</th:block>
+			
+        
+        	<ul>
+	        	<li><input class="fidx" type="hidden" name="fidx" th:value="${detail.fidx}"></li>
+	        	
+	        	<li><h2 class="subject">[[${detail.subject}]]</h2></li>
+	        			
+	        	<li class="nickname" ><h5>작성자 : [[${detail.nickname}]]</h5></li>
+	        	
+	        	<li class="like_cnt">좋아요 [[${detail.like_cnt}]]</li>
+	        	      	
+	        	<li><img th:src="@{/img/}+${detail.fimage}" alt="image" class="fimage"></li>
+	        	
+	        	<li><pre class="content">[[${detail.content}]]</pre></li>        	
+	        	
+	        	<li class="tag_date">태그 &nbsp; [[${detail.hashtag}]] &nbsp;&nbsp;  작성날짜 : <span th:text="${#calendars.format(detail.reg_date,'yyyy-MM-dd')}"></span></li>
+	        	<!-- &nbsp : 공백 --> 
+        
+        	
+        	</ul>
+        </div>
+        
+        
+	    <div class="detailbtn">     
+	           <th:block th:if="${session.user != null}">  <!-- 글 작성자만 수정삭제 보이도록 -->
+	              <th:block th:if="${session.user.name == 'admin' || session.user.nickname == detail.nickname}">
+	               <a th:href="@{/update?(fidx=${detail.fidx},page=${page})}">수정</a>
+	               <a th:href="@{/boarddelete?(fidx=${detail.fidx},page=${page})}">삭제</a>
+	            </th:block>
+	         </th:block>
+	         <a href="/list">목록</a>
+	      </div>
+		
+      
+	</div>
+    <div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

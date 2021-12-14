@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	
+	<div>
+		<div>
+			<img alt="mainbanner" src="/resources/img/mainbanner.jpg" id="mainbanner">
+			<img alt="mainbanner" src="/resources/img/mainbanner2.jpg" id="mainbanner2">
+		</div>
+	</div>
+	
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

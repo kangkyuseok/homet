@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homet.dao.FreeboardMapper">
+
+	<insert id="insert" parameterType="Freeboard" useGeneratedKeys="true" keyProperty="fidx">
+		insert into 
+			freeboard(subject,nickname,hashtag,content,fimage)
+		values
+			(#{subject},#{nickname},#{hashtag},#{content},#{fimage})
+	</insert>
+
+	<update id="update" parameterType="Freeboard">
+		update freeboard set subject=#{subject},content=#{content} where fidx=#{fidx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from freeboard where fidx=#{fidx}
+	</delete>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from freeboard
+	</select>
+	
+	<select id="getBoardOne" parameterType="int" resultType="Freeboard">
+		select * from freeboard where fidx=#{fidx}
+	</select>
+	
+	<select id="getAll" resultType="Freeboard">
+		select * from freeboard
+	</select>
+	
+	<select id="getPagelist" parameterType="PageDto" resultType="Freeboard">
+		select * from freeboard order by idx desc LIMIT #{startNo},#{pageSize}
+	</select>
+	
+	<!-- 검색 SQL : 1) 내용 2) 닉네임 3) 제목 4) 해시태그 -->
+	<select id="searchList" parameterType="PageDto" resultType="Freeboard">
+		SELECT * FROM freeboard 
+				  <if test='"C".equals(field)'> 
+				   where content like concat('%', #{findText},'%')
+				  </if>
+				  <if test='"N".equals(field)'>  
+				   where nickname like concat('%', #{findText},'%') 
+				  </if>
+				  <if test='"S".equals(field)'>
+				   where subject like concat('%', #{findText},'%')
+				  </if>
+				   <if test='"H".equals(field)'>
+				   where hashtag like concat('%', #{findText},'%')
+				  </if>       
+		          ORDER BY fidx DESC 
+		          limit #{startNo},#{pageSize}
+	</select>
+	
+	<select id="searchCount" parameterType="java.util.Map" resultType="int">
+		SELECT count(*) FROM freeboard 
+				 <if test='"C".equals(field)'> 
+				   where content like concat('%', #{findText},'%')
+				  </if>
+				  <if test='"N".equals(field)'>  
+				   where nickname like concat('%', #{findText},'%') 
+				  </if>
+				  <if test='"S".equals(field)'>
+				   where subject like concat('%', #{findText},'%')
+				  </if>
+				   <if test='"H".equals(field)'>
+				   where hashtag like concat('%', #{findText},'%')
+				  </if>           
+	</select>
+	
+	<update id="like_cnt" parameterType="int">
+		update freeboard set like_cnt=(select count(*) from 
+		likes where fidx=#{fidx}) where fidx=#{fidx};
+	</update>
+
+</mapper>

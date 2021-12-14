@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/mealkit_set.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div id="all">
+		<h1>밀키트 세트</h1>
+		<section>
+		<div th:each="set,index : ${setList}" class="set_container">
+				<ul class="set_items">
+					<li><a href="/mealkit/chooseSet" 
+					th:href="@{/mealkit/chooseSet(category=${index.index+1})}" th:text="${set.name}">세트명</a></li>
+					<li th:text="${set.content}">내용</li>
+				</ul>
+		</div>
+		</section>
+	</div>
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html> <html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout/default_layout}"> 
+
+<th:block layout:fragment="head"> 
+<title>Spring Boot 500 Error PAGE</title> 
+<!--/* 이 영역에 공통으로 사용할 css, js library를 선언한다. */--> 
+<link href="../resources/css/error.css" rel="stylesheet" /> 
+</th:block> 
+<body> 
+<section>
+<h1>This is <span>500</span> Error Page!</h1> 
+
+<img src="../resources/img/error_img.png"/>
+<div>
+500 Server Error...
+<br> <br>
+ <input type="button" th:value="뒤로가기" th:onclick="history.back()"/>
+ <input type="button" th:value="처음으로" th:onclick="location.href='/'"/>
+ </div>
+ </section>
+</body> 
+</html>
+

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+section{
+	width: 500px; 
+	 margin:  auto;
+
+}
+input{
+	background-color: #fff;
+	border: 1px solid #9ACF81;
+	border-radius: 5px;
+	margin-left: 15px;
+	padding: 10px 20px;
+}
+input:hover {
+	cursor: pointer;
+	background-color: #9ACF81;
+	color: #fff;
+}
+div{
+	text-align: center;
+	margin: 10px;
+}
+span{
+	color:red;
+}

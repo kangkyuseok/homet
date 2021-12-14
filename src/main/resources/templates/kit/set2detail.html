@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>set1 page</title>
+</head>
+<body>
+	<h2>welcome to set2detail(일반식단 1,2,3,4)</h2>
+	<ul th:each="set : ${meal_list}">	
+			<li th:text="${set.name}">이름</li>
+			<li th:text="${set.price}">가격</li>
+	</ul>
+</body>
+</html>

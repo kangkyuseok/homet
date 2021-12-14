@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="../resources/css/mypage.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+</head>
+<body>
+<div th:fragment="menu" th:replace="include/header :: menu"></div>
+<div id="all">
+      	<h2 style="color: #967B55;">마이페이지</h2>
+<section>
+<div>
+      <ul class="mypagemenu">
+          <li class="menu"><a href=" detail" >회원정보</a></li>
+          <li class="menu"><a href="/mealkit/cart" >장바구니</a></li>
+          <li class="menu"><a href="/mealkit/order" > 구매 목록</a></li>
+          <li class="menu"><a href="delete" >회원탈퇴</a></li>
+      </ul>
+  </div>
+</section>
+</div>
+<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

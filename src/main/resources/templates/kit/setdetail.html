@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/set_detail.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div id="all">
+		<div class="set_container">
+			<div class="set_name">[[${name}]]</div>
+			<div class="set_price">가격 : [[${price}]]원</div>
+		</div>
+		<div class="meal_text"><상품 구성></div>
+		<section class="meal_container">
+		<div th:each="set : ${meal_list}">
+				<img th:src="@{/resources/kit/}+${set.image}">
+				<span th:text="${set.name}" class="item">이름</span>
+				<span th:text="${set.price+'원'}" class="item">가격</span>
+		</div>
+		</section>
+		<div class="btn_box">
+			<button th:onclick="buyNowBtn([[${idx_list}]], [[${price}]], [[${name}]])">지금 구매하기</button>
+			<button th:onclick="cartBtn([[${idx_list}]], [[${price}]], [[${name}]])">장바구니에 추가</button>
+		</div>
+	</div>
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+<script type="text/javascript">
+
+	// 지금 구매하기 : 장바구니에 담고 장바구니로 이동
+	const buyNowBtn = function(idx_list,price,name){
+		window.location.href="/mealkit/cart?type=set&idx_list=" + idx_list+"&price="+price+"&name="+name;
+	}
+	
+	//장바구니로 가거나 mealkit 홈으로 가거나
+	const cartBtn = function(idx_list,price,name){
+		let y = confirm("kit를 장바구니에 담았습니다.\n장바구니로 이동할까요?");
+		if(y) window.location.href="/mealkit/cart?type=set&idx_list=" + idx_list+"&price="+price+"&name="+name;
+		else window.location.href="/mealkit/?type=set&idx_list=" + idx_list+"&price="+price+"&name="+name;
+	}
+	
+
+</script>
+	
+</body>
+</html>

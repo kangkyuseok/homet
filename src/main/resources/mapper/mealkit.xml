@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.homet.dao.MealkitMapper">
+ 
+ 	<select id="getByCategory" resultType="Mealkit" parameterType="String">
+ 		select * from mealkit where category = #{category}
+ 	</select>
+ 	
+ 	<select id="getByIdx" resultType="Mealkit" parameterType="int">
+ 		select * from mealkit where midx=#{midx}
+ 	</select>
+ 	
+ 	<select id="getOrdersByNickname" resultType="Orders" parameterType="String">
+ 		select * from orders where nickname=#{nickname}
+		and DATE(del_date) > DATE(NOW())-1
+ 	</select>
+ 	
+ 	<select id="getSetByCategory" resultType="SetMenu" parameterType="String">
+ 		select * from set_menu where category=#{category}
+ 	</select>
+ 	
+ 	<insert id="insertOrder" parameterType="Orders">
+	   	insert into orders (nickname,order_list,del_date)
+	   	values(#{nickname},#{order_list},DATE_ADD(now(), interval 2 DAY))
+   	</insert>
+ 	
+ 	
+ </mapper>

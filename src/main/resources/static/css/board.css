@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css');
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.container {
+	font-family: 'NanumSquareBold';
+}
+
+/* list css */
+.freeboard {
+	margin-left: 3%;
+}
+.boardtable {
+	width: 100%;
+	margin-left: -10px;
+	/* margin-right: 20px; */
+	text-align: center;
+}
+.listname>th {
+	border-bottom: 1px solid black;
+}
+.boardnotice {
+	background-color: #D6FFC2;
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+}
+.boardlist {
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+}
+.boardlist>td:nth-child(1) {
+	color: #967B55;
+}
+.boardlist>td, .listname>th {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.detaillink>a {
+	color: black;
+}
+.insert {	/* 글쓰기 버튼 */
+	margin-top: 5px;
+	margin-left: 84.5%;
+	
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.insert:hover {
+	background-color: #9ACF81;
+	color: white;
+}
+.page {
+	text-align: center;
+}
+.page>a {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.page>a:hover {
+	background-color: #9ACF81;
+	color: white;
+}
+
+/* write css */
+.writetable {
+	margin-top: 3%;
+	margin-left: 33%;
+}
+input[type="text"] {
+	width: 80%;
+	height: 30px;
+	border: 1px solid #9ACF81;
+	border-radius: 5px;
+}
+textarea {
+	width: 80%;
+	height: 50%;
+	border: 1px solid #9ACF81;
+	border-radius: 5px;
+}
+.writebtn {
+	margin-top: 10px;
+	margin-left: 45%;
+}
+.writebtn>a, .writebtn>button[type=submit], .writebtn>button[type=reset] {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.writebtn>a:hover, .writebtn>button[type=submit]:hover, .writebtn>button[type=reset]:hover {
+	background-color: #9ACF81;
+	color: white;
+	cursor: pointer;
+}
+
+/* detail css */
+@charset "UTF-8";
+
+#all{
+	margin: auto;
+	width: 100%;
+	max-width:70%;
+	padding:5%;
+	background:#fff;
+	border-radius:30px;
+	box-sizing:border-box;
+	box-shadow: 0 0 15px rgba(0,0,0,0.1);	
+}
+li {
+	list-style: none;
+}
+.heartbutton{
+	cursor: pointer;
+	text-align: right;
+}
+.heartbutton2{
+	cursor: pointer;
+	text-align: right;
+}
+.detailbtn {
+   margin-top: 10px;
+   text-align: center;
+}
+.detailbtn>a {
+   height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+   display: inline-block;
+   margin-top: 10px;
+   margin-right: 10px;
+   margin-bottom: 30px;
+}
+.detailbtn>a:hover {
+   background-color: #9ACF81;
+   color: white;
+}
+
+.like_cnt>li:nth-child(1){
+	text-align: right;
+	padding-right: 10px;
+}
+.nickname{
+	
+}
+.content{
+	margin: auto;
+	width: 100%;
+	min-height:200px;
+	white-space: pre-wrap;
+	text-align: center;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+.fimage{
+	width: 50%;
+	height: 50%;
+	margin-left: 28%;
+}
+.tag_date{
+	text-align: right;
+}
+
+/* update css */
+.updatetable {
+	margin-top: 3%;
+	margin-left: 33%;
+}
+.updatebtn {
+	margin-top: 10px;
+	margin-left: 45%;
+}
+.updatebtn>a, .updatebtn>button[type=submit] {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.updatebtn>a:hover, .updatebtn>button[type=submit]:hover{
+	background-color: #9ACF81;
+	color: white;
+	cursor: pointer;
+}

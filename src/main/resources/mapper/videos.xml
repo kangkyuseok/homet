@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homet.dao.VideosMapper">
+
+	<select id="getAll" resultType="Videos">
+		select * from videos
+	</select>
+	
+	<select id="getOne" resultType="Videos" parameterType="int">
+		select * from videos where vidx=#{vidx}
+	</select>
+	
+	<select id="categoryCount" resultType="int" parameterType="Videos">
+		SELECT count(*) FROM videos where category=#{category}
+	</select>
+	
+	<select id="getPageList" resultType="Videos" parameterType="PageDto">
+		select * from videos 
+ 			<if test="category != null">
+				where category=#{category}
+			</if>
+		order by vidx desc LIMIT #{startNo},#{pageSize}
+	</select>
+	
+	<select id="listCount" resultType="int" parameterType="java.util.Map">
+		SELECT count(*) FROM videos
+			<if test="category != null">
+				where category=#{category}
+			</if>
+	</select>
+	
+	<insert id="insert" parameterType="Videos" useGeneratedKeys="true" keyProperty="vidx">
+		insert into videos(subject, category, url, content)
+			values(#{subject}, #{category}, #{url}, #{content})
+	</insert>
+	
+	<update id="update" parameterType="Videos">
+		update videos set subject=#{subject}, content=#{content}, category=#{category}
+			where vidx=#{vidx}
+	</update>
+	
+	<update id="updateReadCnt" parameterType="int">
+		update videos set read_cnt=read_cnt+1 where vidx=#{vidx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from videos where vidx=#{vidx}
+	</delete>
+	
+</mapper>

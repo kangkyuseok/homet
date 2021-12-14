@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/board.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+</head>
+<script type="text/javascript">
+   function setThumbnail(event) {
+      var reader = new FileReader(); 
+      reader.onload = function(event) { 
+      var img = document.createElement("img"); 
+      img.setAttribute("src", event.target.result); 
+      document.querySelector("div#image_container").appendChild(img); }; 
+      reader.readAsDataURL(event.target.files[0]); }
+      
+</script>
+<body>
+
+<div th:fragment="menu" th:replace="include/header :: menu"></div>
+
+<div class="container">
+	<form action="/save" enctype="multipart/form-data" method="post">
+        <table class="writetable">
+        <tr>
+			<td><h3 style="color: #967B55;">FREEBOARD UPLOAD</h3></td>
+		</tr>
+        <tr>
+        	<td><input type="text" id="subject" name="subject" placeholder="제목"></td>
+        </tr>
+        <tr>
+        	<td><input type="text" id="nickname" name="nickname" th:value="${user.nickname}"></td>
+        </tr>
+        <tr>
+        	<td><textarea id="content" name="content" rows="10" cols="80"
+        	placeholder="작성하실 내용을 입력해주세요."></textarea></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="hashtag" name="hashtag" placeholder="태그 입력" ></td>
+		</tr>
+		<tr>
+			<td><div class="File">
+				 <input type="file" name="fimage" accept="image/*" 
+	               onchange="setThumbnail(event);">
+	               <div id="image_container"></div>
+			</div>
+			</td>
+		</tr>	
+		</table>
+		
+		<div class="writebtn">
+        	<button type="submit">등록</button>
+        	<button type="reset">취소</button>
+        	<a href="/list">목록</a>
+    	</div>
+    	
+    </form>
+    </div>
+<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>
+
+
+
+

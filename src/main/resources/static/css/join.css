@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+#all {
+	margin: auto;
+    width: 100%;
+    max-width:100%;
+    padding:5%;
+    background:#fff;
+    border-radius:30px;
+    box-sizing:border-box;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin-bottom: 20%;
+}
+section{
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
+#name_ck{
+	color:red;
+	 margin-left: 15px;
+}
+#password_ck ,#password_ck2{
+	color:red;
+	 margin-left: 15px;
+}
+#alert-success{
+	color:green;
+	 margin-left: 15px;
+}
+#alert-danger{
+	color:red;
+	 margin-left: 15px;
+}
+.id_ok{
+	display:none;
+	 margin-left: 15px;
+}
+.id_already{
+	display: none;
+	 margin-left: 15px;
+}
+#email_ck{
+	color:red;
+	 margin-left: 15px;
+}
+.compare{
+	display: none;
+	
+	 margin-left: 15px;
+}
+.compare-text{
+	display: none;
+	color:red;
+	 margin-left: 15px;
+}
+#nickname_ck{
+	color:red;
+	margin-left: 15px;
+}
+th{
+	border-radius: 10px;
+	padding: 10px 20px;
+	color: #967B55;
+	/* border: 1px solid #967B55; */
+}
+input{
+	background-color: #fff;
+	border: 1px solid #9ACF81;
+	border-radius: 5px;
+	margin-left: 15px;
+	padding: 10px 20px;
+}
+#sendMail{
+	background-color: #fff;
+	border-radius: 20px;
+	border: 1px solid #9ACF81;
+}
+#sendMail:hover {
+	cursor: pointer;
+	background-color: #9ACF81;
+	color: #fff;
+}
+#submit, #reset {
+	margin-top: 5%;
+	border-radius: 50px;
+	border: 1px solid #9ACF81;
+}
+#submit:hover, #reset:hover {
+	cursor: pointer;
+	background-color: #9ACF81;
+	color: #fff;
+}
+#member_post {
+	border-radius: 50px;
+	border: 1px solid #9ACF81;
+}
+#member_post:hover {
+	cursor: pointer;
+	background-color: #9ACF81;
+	color: #fff;
+}

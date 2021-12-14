@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homet.dao.HealthMapper"> <!-- namespace : java 인터페이스와 매핑될 파일 지정 -->
+
+	<select id="getList" resultType="Health">
+		SELECT * FROM health
+	</select>
+	
+	<select id="getOne" resultType="Health">
+		select name,address from health where hidx=#{hidx};
+	</select>
+	
+	<select id="getSearch" resultType="Health" parameterType="String">
+		select name from health where address like concat ('%',#{location},'%');
+	</select>
+	
+	
+<!-- <insert id="insert" parameterType="Comment">  
+		INSERT INTO board_comment (mref,name,password,content)
+		VALUES (#{mref},#{name},#{password},#{content})
+	</insert> -->
+	<!-- <select id="commentCount" resultType="int" parameterType="int">
+		SELECT count(*) FROM board_comment WHERE mref=#{mref}
+	</select>
+	
+	<update id="update" parameterType="java.util.HashMap">
+		UPDATE board_comment set content=#{content} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_comment where idx=#{idx}
+	</delete>
+	
+	freeboard 테이블의 commentCount 수정 : 완성후에는 freebord.xml 로 이동.
+	<update id="updateCommentCnt" parameterType="java.util.HashMap">
+		UPDATE freeboard set COMMENTCOUNT=#{cmtcnt} where idx=#{idx}
+	</update>
+	
+	댓글추가/삭제에 모두 적용할 수 있습니다.
+	<update id="updateCountAll" parameterType="int">
+		update freeboard set commentCount=(
+		select count(*) from board_comment where mref=#{idx}) where idx=#{idx}	
+	</update>	메인글의 idx 가 파라미터입니다.
+	 -->
+	
+</mapper>
