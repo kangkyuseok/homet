@@ -7,8 +7,7 @@
 --
 ERD
 --
-사용언어
---
+## **사용언어**
 FrontEnd
 *spring boot
 *JQuery
