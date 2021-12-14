@@ -17,5 +17,10 @@
 - JavaScript
 - HTML
 - JSP
-
+# BackEnd
+- Spring Boot
+- Java
+# DataBase
+- oracle
+- Dbeaver
 
