@@ -8,16 +8,15 @@
 ## ERD
 -
 ## **사용언어**
->FrontEnd
-> >Spring Boot
-> JQuery
-> BootStrap
-> AJAX
-> JSON
-> CSS
-> CKEditor 4
-> JavaScript
-> HTML
-> JSP
+# FrontEnd
+- Spring Boot
+- JQuery
+- BootStrap
+- AJAX
+- JSON
+- CSS
+- JavaScript
+- HTML
+- JSP
 
 
