@@ -9,7 +9,7 @@ ERD
 --
 ## **사용언어**
 >FrontEnd
-> >pring boot
+> >Spring Boot
 > JQuery
 > BootStrap
 > AJAX
