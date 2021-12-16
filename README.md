@@ -19,7 +19,6 @@
 # FrontEnd
 - Spring Boot
 - JQuery
-- BootStrap
 - AJAX
 - JSON
 - CSS
