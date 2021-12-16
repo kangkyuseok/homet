@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/cart_order.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div id="all">
+	<h1>구매내역</h1>
+		<div class="cart_container">
+		<ul th:each="order,i : ${orderList}" class="order_container">
+			<li th:text="|주문자 : ${order.nickname}|">test nickname</li>
+			<li th:text="|상품명 : 밀키트 ${i.index+1}|">test nickname</li>
+			<li th:text="|주문일 : ${order.order_date}|">test orderdate</li>
+			<li th:text="|배송일 : ${order.del_date}|">test deldate</li>
+		</ul>
+		</div>
+	</div>
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

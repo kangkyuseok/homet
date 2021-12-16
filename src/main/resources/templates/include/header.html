@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Header</title>
+</head>
+<body>
+<div class="header" th:fragment="menu">
+	<header>
+		<div class="logo">
+			<a href="/"><img alt="mainlogo" src="/resources/img/mainlogo.png" id="mainlogo"></a>
+		</div>
+		
+		<div class="user" th:if="${session.user != null}">
+			[[${session.user.name}]]님([[${session.user.email }]])&emsp;
+			<a href="../user/mypage">MyPage</a> / &emsp;<a href="../logout">Logout</a>
+		</div>
+		<div class="user" th:unless="${session.user != null}">
+			<a href="../login">Login</a>
+		</div>
+		
+		<nav>
+			<ul class="navigation">
+				<li><a href="/video">VIDEO</a></li>
+				<li><a href="/list">BOARD</a></li>
+				<li><a href="/mealkit/">MEALKIT</a></li>
+				<li><a href="/health/healthMap">HEALTH</a></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+</body>
+</html>

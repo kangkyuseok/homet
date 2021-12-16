@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+@media screen and (min-width:768px) {
+
+}
+
+body {
+	width: 100%;
+	/* font-family: 'Acme', sans-serif; */
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+a {
+	text-decoration:none;
+	color: #967B55;
+}
+a:hover {
+	color: #9ACF81;	/* 마우스 올렸을 때 색상 변화 */
+}
+.header {
+	width: 100%;
+	height: 80%;
+	margin: 30px;
+	font-family: 'Cinzel', serif;
+}
+.logo {
+	width: 95%;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: flex;
+	justify-content: center;
+}
+#mainlogo {
+	height: 150px;
+}
+.user {
+	width: 95%;
+	padding-right: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+.user>a {
+	margin-right: 20px;
+}
+.navigation {
+	width: 94%;
+	height: 40px;
+	display: flex;
+	justify-content: space-around;
+    padding: 12px 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.navigation>li {
+	list-style: none;
+	font-size: 20px;
+}

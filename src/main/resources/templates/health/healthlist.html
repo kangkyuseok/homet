@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+</head>
+<style>
+.layout{
+	width : 750px;
+	
+	margin : 0 auto;
+	margin-top : 40px;
+}
+
+</style>
+<body>
+<div class="con">
+		<form action="">
+			<input type="hidden" name="getSearch" value="free">
+			<!-- <input type="hidden" name="page" value="1"> -->
+			<select name="searchType">
+				<option value="title">상호명</option>
+				<option value="addr">주소</option>
+			</select>
+			<input type="text" name="getSearch" placeholder="검색어를 입력하세요">
+			<input type="submit" value="검색">
+		</form>
+	</div>
+<div class="layout">
+	<table>
+	
+	<thead><!-- <tr>
+	<td>
+			
+			<input placeholder="상호명을 입력하세요" name="location" /></td>
+			<td><input type="submit" value="검색" /></td>
+		</tr>
+		</thead>
+		<thead> -->
+		<tr>
+			<th >순번</th>
+			<th>상호명</th>
+			<th>주소명</th>
+		</tr>	
+		</thead>
+		<tbody>
+			<tr th:each ="health : ${list}" >
+				<td th:text="${health.hidx}"></td>
+				<td th:text="${health.name}" th:href="@{#}"></td>
+				<td th:text="${health.address}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

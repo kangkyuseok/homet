@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/video.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div class="video">
+		<h2 style="color: #967B55;">VIDEO</h2>
+	</div>
+	<div class="container">
+		<!-- <h3 style="text-align: center; color: #4080bf;">글 목록</h3>
+		<h5 style="text-align: center; color: blue;">
+			현재 페이지 : <span th:text="${page.currentPage}"></span> / 전체페이지 : <span th:text="${page.totalPage}"></span>
+		</h5> -->
+		
+		<nav>
+			<ul class="category">
+				<li id="category"><a th:href="@{/video}">전체</a></li>
+				<li id="category"><a th:href="@{/video?(category=홈트)}">홈트</a></li>
+				<li id="category"><a th:href="@{/video?(category=웨이트)}">웨이트</a></li>
+				<li id="category"><a th:href="@{/video?(category=요가)}">요가</a></li>
+				<li id="category"><a th:href="@{/video?(category=스트레칭)}">스트레칭</a></li>
+			</ul>
+		</nav>
+		<div class="videolist">
+			<table class="videotable">
+				<tr class="listname">
+					<th width="10%">번호</th>
+					<th width="45%">제목</th>
+					<th width="10%">조회수</th>
+					<th width="20%">작성일</th>
+				</tr>
+				<th:block th:each="vo : ${list}">
+					<tr class="videolist">
+						<td><b>[[${vo.vidx}]]</b></td>
+						<td class="detaillink">
+						<a th:href="@{/videodetail?(vidx=${vo.vidx},page=${page.currentPage},category=${vo.category})}">[[${vo.subject}]]</a>
+							<span style="color: orange;"></span></td>
+						<td th:text="${vo.read_cnt}"></td>
+						<td th:text="${#calendars.format(vo.reg_date,'yyyy-MM-dd')}"></td>
+					</tr>
+				</th:block>
+				</table>
+			</div>
+			
+			<div>
+			<th:block th:if="${session.user != null}">
+				<th:block th:if="${session.user.name == 'admin'}">
+					<a class="insert" th:href="@{/videoinsert?(page=${page.currentPage})}">글쓰기</a>
+				</th:block>
+			</th:block>
+			</div>
+			<!-- 페이지 이동 : 자바의 T연산자를 이용하여 클래스 인스턴스를 지정하거나 클래스의 static 메소드를 사용할 수 있다.-->
+			<div th:if="${category==null}">
+			<div class="page" th:with="start=${page.startPage},last=(${page.startPage+9<page.totalPage?start+9:page.totalPage})">
+				<a th:href="@{/video?(page=1)}" class="btn btn-default">&lt;&lt;</a>
+				<a th:href="${page.startPage==1}? @{/video?(page=1)} : @{.(page=${page.currentPage-10})}" th:class="${page.startPage==1}? 'disabled'" class="btn btn-default">&lt;</a>
+				
+				<a th:each="i:${#numbers.sequence(start,last)}" 
+				th:href="@{/video?(page=${i})}" th:text="${i}" th:class="${i==page.currentPage}?'':'btn btn-default'"></a>
+	
+				<a th:href="${page.endPage==page.totalPage}? @{/video?(page=${page.totalPage})}:@{.(page=${page.currentPage+10})}" th:class="${page.endPage==page.totalPage}? 'disabled'" class="btn btn-default">&gt;</a>
+				<a th:href="@{/video?(page=${page.totalPage})}" class="btn btn-default">&gt;&gt;</a>
+			</div>
+			</div><!--  thymeleaf Numbers 클래스를 이용하여 배열생성 #numbers.sequence -->
+			
+			<div th:if="${category!=null}" style="text-align: center;">
+			<div class="page" th:with="start=${page.startPage},last=(${page.startPage+9<page.totalPage?start+9:page.totalPage})">
+				<a th:href="@{/video?(page=1,category=${category})}" class="btn btn-default">&lt;&lt;</a>
+				<a th:href="${page.startPage==1}? @{/video?(page=1,category=${category})} : @{.(page=${page.currentPage-10},category=${category})}" th:class="${page.startPage==1}? 'disabled'" class="btn btn-default">&lt;</a>
+				
+				<a th:each="i:${#numbers.sequence(start,last)}" 
+				th:href="@{/video?(page=${i},category=${category})}" th:text="${i}" th:class="${i==page.currentPage}?'':'btn btn-default'"></a>
+	
+				<a th:href="${page.endPage==page.totalPage}? @{/video?(page=${page.totalPage},category=${category})}:@{.(page=${page.currentPage+10},category=${category})}" th:class="${page.endPage==page.totalPage}? 'disabled'" class="btn btn-default">&gt;</a>
+				<a th:href="@{/video?(page=${page.totalPage},category=${category})}" class="btn btn-default">&gt;&gt;</a>
+			</div>
+			</div><!--  thymeleaf Numbers 클래스를 이용하여 배열생성 #numbers.sequence -->
+	</div> <!-- container -->
+	
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

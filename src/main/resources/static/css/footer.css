@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+body {
+	width: 100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.footer {
+	font-size: 13px;
+	margin-top: 10%;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.footer>hr {
+	border: 0.5px solid #967B55;
+}
+.footerTitle {
+	font-size: 15px;
+}

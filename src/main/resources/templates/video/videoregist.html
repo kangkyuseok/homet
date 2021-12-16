@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/video.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	
+	<div class="container">
+	<form action="/videosave">
+		<table class="registtable">
+			<tr>
+				<td><h3 style="color: #967B55;">VIDEO UPLOAD</h3></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="subject" placeholder="제목"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="category" placeholder="카테고리 : 홈트, 웨이트, 요가, 스트레칭"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="url" placeholder="URL"></td>
+			</tr>
+			<tr>
+				<td><textarea rows="10" cols="80" name="content" required="required" placeholder="내용"></textarea></td>
+			</tr>
+		</table>
+		
+		<div class="registbtn">
+			<button type="submit">저장</button>
+			<a th:href="@{/video?(page=${page})}">취소</a>
+		</div>
+		</form>
+	</div>
+	
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

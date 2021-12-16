@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Kakao Login Test</h1>
+	<span th:if="${userId==null}">
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=	49ab14fa70aec5bb0fb425254d76f398&redirect_uri=http://localhost:8083/login&response_type=code">
+			<img src = "/img/login_btn_ka.png">
+		</a>
+	</span>
+	<span th:if="${userId!=null}">
+		<form name="logout" th:action="http://localhost:8080/logout">
+			<input type="submit" value="로그아웃">
+		</form>
+	</span>
+</body>
+</html>

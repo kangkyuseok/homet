@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/board.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+	<head>
+	<meta charset="UTF-8">
+	<title>아보카도</title>
+</head>
+<body>
+<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	
+	<div class="freeboard">
+		<h2 style="color: #967B55;">FREEBOARD</h2>
+	</div>
+	<div class="container">
+	<div class="boardlist">
+		<table class="boardtable">
+			<tr class="listname">
+				<th width="10%">번호</th>
+				<th width="45%">제목</th>
+				<th width="15%">작성자</th>
+				<th width="20%">작성일</th>
+			</tr>
+			<th:block th:each="vo : ${list}">
+				<tr class="boardlist">
+					<td><b>[[${vo.fidx }]]</b></td>
+					<td class="detaillink">
+					<a th:href="@{detail(fidx=${vo.fidx},page=${page.currentPage})}">[[${vo.subject }]]</a>
+					<td th:text="${vo.nickname }"></td>
+					<td th:text="${#calendars.format(vo.reg_date,'yyyy-MM-dd')}">]
+					</td>
+				</tr>
+			</th:block>
+			</table>
+			</div>
+			<div>
+				<a class="insert" th:href="@{write?(page=${page.currentPage})}">글쓰기</a>
+			</div>
+		
+		<div>
+		<div class="page" th:with="start=${page.startPage},last=(${page.startPage+9<page.totalPage?start+9:page.totalPage})">
+				<a th:href="@{/list?(page=1)}" class="btn btn-default">&lt;&lt;</a>
+				
+				<a th:href="${page.startPage==1}? '#':@{/list?(page=${page.currentPage-10})}" th:class="${page.startPage==1}? 'disabled'" class="btn btn-default">&lt;</a>
+				<a th:each="i:${#numbers.sequence(start,last)}" 
+				th:href="@{/list?(page=${i})}" th:text="${i}" th:class="${i==page.currentPage}?'':'btn btn-default'"></a>
+
+				<a th:href="${page.endPage==page.totalPage}? '#':@{/list?(page=${page.currentPage+10})}" th:class="${page.endPage==page.totalPage}? 'disabled'" class="btn btn-default">&gt;</a>
+				<a th:href="@{/list?(page=${page.totalPage})}" class="btn btn-default">&gt;&gt;</a>
+				</div>
+		</div>
+	</div> 
+<div th:fragment="footer" th:replace="include/footer :: footer"></div>	
+</body>
+</html>

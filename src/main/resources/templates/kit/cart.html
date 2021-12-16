@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="/resources/css/cart_order.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div id="all">
+	<h1>장바구니</h1>
+	<section>
+	<div th:each="kit, i : ${session.cart}" class="cart_container">
+			<div th:text="|밀키트${i.index+1}|" class="kit_name"></div>
+			<span th:text="${kit.price}" class="price"></span>
+			<span>원</span>
+		<div class="kit_items">
+		<ul th:each="vo : ${kit.list}">
+			<li>
+				<span th:text="${vo.name}"></span>
+				<span th:text="|${vo.price}원|"></span>
+			</li>
+		</ul>
+		</div>
+	</div>
+	<div th:each="kit, i : ${session.cart_set}" class="cart_container">
+			<div th:text="${kit.name}" class="kit_name"></div>
+			<span th:text="${kit.price}" class="price"></span>
+			<span>원</span>
+		<div class="kit_items">
+		<ul th:each="vo : ${kit.list}">
+			<li>
+				<img th:src="@{/resources/kit/}+${vo.image}">
+				<span th:text="${vo.name}"></span>
+				<span th:text="|${vo.price}원|"></span>
+			</li>
+		</ul>
+		</div>
+	</div>
+	</section>
+	<div id="price_all"></div>
+	<div>
+	<button onclick="kit()" class="order_btn">쇼핑 계속하기</button>
+	<button onclick="order()" class="order_btn">주문하기</button>
+	</div>
+	</div>
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+
+<script type="text/javascript">
+
+	let price_all = 0;
+	const $price = document.getElementsByClassName("price");
+	
+	for( let i = 0; i < $price.length; i++ ){ 
+		let price = $price.item(i).innerText;
+		price_all+= parseInt(price);
+	}
+	
+	document.getElementById("price_all").innerHTML = "총 결제금액 : " + price_all + "원";
+	
+	const order = function(){
+		window.location.href="/mealkit/order?type=1";
+	}
+	const kit = function(){
+		window.location.href="/mealkit/";
+	}
+</script>
+</html>

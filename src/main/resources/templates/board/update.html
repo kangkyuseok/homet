@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/board.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+</head>
+<body>
+
+<div th:fragment="menu" th:replace="include/header :: menu"></div>
+
+	<div class="container">
+		<form th:action="@{/updatesave}" method="post">
+		<table class="updatetable">
+		<tr>
+			<td><h3 style="color: #967B55;">FREEBOARD UPDATE</h3></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="subject" name="subject" th:value="${detail.subject}"></td>
+		</tr>
+		
+		<tr>
+			<td><input type="text" id="nickname"  name="nickname" th:value="${detail.nickname}" readonly></td>
+		</tr>
+		
+		<tr> 
+			<td><textarea id="content" name="content" rows="10" cols="80">[[${detail.content}]]</textarea></td>  
+		</tr>
+		
+		<tr>
+			<td><input type="text" id="hashtag" name="hashtag" th:value="${detail.hashtag}"></td>
+		</tr>
+		</table>
+		
+		<input type="hidden" name="fidx" th:value="${fidx}">
+		<input type="hidden" name="page" th:value="${page}">
+		
+		<div class="updatebtn">			
+			<button type="submit">저장</button>
+			<a th:href="@{/detail?(fidx=${fidx},page=${page})}">돌아가기</a>
+		</div>
+		</form>	
+	</div>
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

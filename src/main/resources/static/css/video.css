@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css');
+
+body {
+	width: 100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.container {
+	font-family: 'NanumSquareBold';
+}
+
+/* list css */
+.video {
+	margin-left: 3%;
+}
+.category {
+	margin-top: 0px;
+	width: 94%;
+	height: 40px;
+	display: flex;
+	justify-content: flex-start;
+}
+.category>li {
+    height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+#category>a {
+	color: black;
+}
+#category>a:hover, .category>li:hover {
+	background-color: #9ACF81;
+	color: white;
+}
+.videotable {
+	width: 100%;
+	margin-left: -10px;
+	/* margin-right: 20px; */
+	text-align: center;
+}
+.listname>th {
+	border-bottom: 1px solid black;
+}
+.videolist {
+	padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+}
+.videolist>td:nth-child(1) {
+	color: #967B55;
+}
+.videolist>td, .listname>th {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.detaillink>a {
+	color: black;
+}
+.insert {	/* 글쓰기 버튼 */
+	margin-top: 5px;
+	margin-left: 83%;
+	
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.insert:hover {
+	background-color: #9ACF81;
+	color: white;
+}
+.page {
+	text-align: center;
+}
+.page>a {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.page>a:hover {
+	background-color: #9ACF81;
+	color: white;
+}
+
+/* detail css */
+#all{
+   margin: auto;
+   width: 100%;
+   max-width:70%;
+   heigth: 100%;
+   max-height: 70%;
+   padding:5%;
+   background:#fff;
+   border-radius:30px;
+   box-sizing:border-box;
+   box-shadow: 0 0 15px rgba(0,0,0,0.1);   
+}
+.detailtable {
+	margin-left: 7%;
+}
+.detailiframe {
+	padding-top: 20px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+.videocontent {
+	padding-top: 20px;
+	text-align: center;
+	width: 100%;
+	white-space: pre-wrap;
+}
+.detailbtn {
+	margin-top: 10px;
+	text-align: center;
+}
+.detailbtn>a {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.detailbtn>a:hover {
+	background-color: #9ACF81;
+	color: white;
+}
+
+/* regist css */
+.registtable {
+	margin-top: 3%;
+	margin-left: 33%;
+}
+input[type="text"] {
+	width: 80%;
+	height: 30px;
+	border: 1px solid #9ACF81;
+	border-radius: 5px; 
+}
+textarea {
+	border: 1px solid #9ACF81;
+	border-radius: 5px; 
+}
+.registbtn {
+	margin-top: 10px;
+	margin-left: 45%;
+}
+.registbtn>a, .registbtn>button[type=submit] {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.registbtn>a:hover, .registbtn>button[type=submit]:hover {
+	background-color: #9ACF81;
+	color: white;
+	cursor: pointer;
+}
+
+/* update css */
+.updatetable {
+	margin-top: 3%;
+	margin-left: 33%;
+}
+.updatebtn {
+	margin-top: 10px;
+	margin-left: 45%
+}
+.updatebtn>a, .updatebtn>button[type=submit] {
+	height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    border: 1px solid #9ACF81;
+    font-size: 13px;
+    color: #000;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.updatebtn>a:hover, .updatebtn>button[type=submit]:hover{
+	background-color: #9ACF81;
+	color: white;
+	cursor: pointer;
+}

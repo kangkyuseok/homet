@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/video.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	
+	<div id="all">
+		<div class="container">
+			<table class="detailtable">
+				<tr>
+					<td><h3>[[${video.subject}]]</h3></td>
+				</tr>
+				<tr>
+					<td th:text="${#calendars.format(video.reg_date,'yyyy-MM-dd')}"></td>
+					<th>조회수</th>
+					<td th:text="${video.read_cnt}"></td>
+				</tr>
+			</table>
+			
+			<div class="detailcontent">
+				<iframe width="1000" height="600" th:src="${video.url}" title="YouTube video player" frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
+				<pre>[[${video.content}]]</pre>
+			</div>
+			
+			<div class="detailbtn">
+				<th:block th:if="${session.user != null}">
+					<th:block th:if="${session.user.name == 'admin'}">
+						<a th:href="@{/videoupdate?(vidx=${video.vidx},page=${page},category=${video.category})}">수정</a>
+						<a th:href="@{/videodelete?(vidx=${video.vidx},page=${page})}">삭제</a>
+					</th:block>
+				</th:block>
+				<a th:href="@{/video?(page=${page},category=${category})}">목록</a>
+			</div>
+		</div>
+	</div>
+	
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

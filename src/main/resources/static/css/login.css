@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+#all {
+	margin: auto;
+    width: 100%;
+    max-width:100%;
+    padding:5%;
+    background:#fff;
+    border-radius:30px;
+    box-sizing:border-box;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+section{
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
+th{
+	color: #967B55;
+	padding: 10px 20px;
+	/* border: 1px solid #967B55; */
+	border-radius: 10px;
+}
+input{
+	background-color: #fff;
+	border: 1px solid #9ACF81;
+	border-radius: 5px;
+	margin-left: 15px;
+	padding: 10px 20px;
+}
+#gojoin {
+	background-color: #fff;
+	border-radius: 50px;
+	border: 1px solid #9ACF81;
+}
+#idfind, #password {
+	background-color: #fff;
+	border-radius: 50px;
+	border: 1px solid #9ACF81;
+	margin-top: 3%;
+}
+#idfind:hover, #password:hover, #gojoin:hover {
+	cursor: pointer;
+	background-color: #9ACF81;
+	color: #fff;
+}
+#submit{
+	 border-radius: 50px;
+	 border: 1px solid #9ACF81;
+}
+#submit:hover {
+	background-color: #9ACF81;
+	color: #fff;
+	cursor: pointer;
+}
+.kakao {
+	margin-top: 10%;
+	margin-left: 100%;
+}

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+:root {
+  /* color */
+  --black-color: #232323;
+  /* --white-color: #f9f8f8; */
+  --white-color: white;
+  --light-gray-color: #b2b2b2;
+  --dark-gray-color: rgb(124, 124, 124);
+  --purple-color: #6900ff;
+
+  /* size */
+  --padding: 12px;
+
+  /* font size */
+  --font-title-topMid: 80px;
+  --font-title-bottom: 30px;
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+/* 본문내용이 있다면 반응형 때 세로로 변화하도록 */
+@media screen and (max-width:768px) {   
+	#mainbanner {
+		display: none;
+   }
+	#mainbanner2 {
+		display: block;
+	}
+}
+
+@media screen and (min-width:768px) {   /* 768px 이하 일 때 작은 배너 보여주기 */
+	#mainbanner {
+		display: block;
+   }
+	#mainbanner2 {
+		display: none;
+	}
+}
+body {
+	width: 100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+#mainbanner {
+	width: 100%;
+	margin: -6px;
+}
+#mainbanner2 {
+	width: 100%;
+	margin: -6px;
+}

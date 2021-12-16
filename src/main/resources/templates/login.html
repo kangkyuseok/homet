@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<!-- 카카오 스크립트 -->
+<link rel="stylesheet" href="/resources/css/login.css">
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/resources/js/login.js" defer></script>
+</head>
+<body>
+<section>
+<div align="center">
+	<div class="logo">
+		<a href="/"><img alt="mainlogo" src="/resources/img/mainlogo.png" id="mainlogo"></a>
+	</div>
+	
+	<div id="all">
+	<h2 style="color: #967B55;">JOIN</h2>
+	
+	<form method="post" th:action="@{login}">
+	<table>
+		<tr>
+			<th>아이디</th>
+			<td><input type="text" name="email"/> <input type="submit" id="submit" th:value="로그인"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th>
+			<td><input type="password" name="password"/> <input type="button"  id="gojoin" th:value="회원가입" th:onclick="location.href='user/join?start=1'"/></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				
+			
+				<input type="button"  id="idfind" th:value="아이디찾기" th:onclick="location.href='findId'"/>
+				<input type="button"  id="password" th:value="비밀번호변경" th:onclick="location.href='password'"/>
+			</td>
+		</tr>
+		
+		
+		<tr>
+		
+	<td onclick="kakaoLogin();">
+      <a href="javascript:void(0)">
+         <img class="kakao" src="resources/img/login_btn_ka.png"/>
+      </a>
+	</td>
+	<!-- <td onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</td> -->
+
+		
+		</tr>
+		
+	</table>
+	</form>
+	</div>
+
+</div>
+	
+</section>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+<link rel="stylesheet" href="../resources/css/mypage.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	<div id="all">
+      	<h1 style="color: #967B55;">MEALKIT</h1>
+<section>
+<div>
+      <ul class="mypagemenu">
+          <li class="menu2"><a href="/mealkit/mealkit">밀키트 만들기</a></li>
+          <li class="menu2"><a href="/mealkit/mealkitset">추천 세트</a></li>
+      </ul>
+  </div>
+</section>
+</div>
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>

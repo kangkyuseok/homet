@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아보카도</title>
+<link rel="stylesheet" href="/resources/css/header.css">
+<link rel="stylesheet" href="/resources/css/video.css">
+<link rel="stylesheet" href="/resources/css/footer.css">
+</head>
+<body>
+	<div th:fragment="menu" th:replace="include/header :: menu"></div>
+	
+	<div class="container">
+	<form th:action="@{/videomodify}" method="post">
+		<input type="hidden" name="vidx" th:value="${vidx}">
+		<input type="hidden" name="page" th:value="${page}">
+		<table class="updatetable">
+			<tr>
+				<td><h3 style="color: #967B55;">VIDEO UPDATE</h3></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="subject" placeholder="제목" th:value="${video.subject}"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="category" placeholder="카테고리 : 홈트, 웨이트, 요가, 스트레칭" th:value="${video.category}" readonly></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="url" placeholder="URL" th:value="${video.url}" readonly></td>
+			</tr>
+			<tr>
+				<td><textarea rows="10" cols="80" name="content" required="required" placeholder="내용">[[${video.content}]]</textarea></td>
+			</tr>
+		</table>
+		
+		<div class="updatebtn">
+			<button type="submit">저장</button>
+			<a th:href="@{/videodetail?(vidx=${vidx},page=${page},category=${video.category})}">돌아가기</a>
+		</div>
+		</form>
+	</div>
+	
+	<div th:fragment="footer" th:replace="include/footer :: footer"></div>
+</body>
+</html>
